@@ -285,6 +285,7 @@ extern jmp_buf __unity_exp_buf__;
 #define TEST_SHOULD_CATCH_ASSERT(actual)                  \
     TEST_TRY {                                            \
         actual;                                           \
+        TEST_FAIL();                                      \
     } TEST_CATCH {                                        \
         TEST_ASSERT_TRUE(TRUE);                           \
     } TEST_ETRY;
@@ -302,7 +303,7 @@ extern jmp_buf __unity_exp_buf__;
         actual;                                               \
         TEST_ASSERT_TRUE(TRUE);                               \
     } TEST_CATCH {                                            \
-        TEST_FAIL_MESSAGE(message);                           \
+        TEST_FAIL();                                          \
     } TEST_ETRY;
 
 #define TEST_SHOULD_NOT_CATCH_ASSERT_MESSAGE(actual, message) \
