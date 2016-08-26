@@ -8,8 +8,15 @@
 #define UNITY_FRAMEWORK_H
 #define UNITY
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include "unity_internals.h"
 
+void setUp(void);
+void tearDown(void);
 
 //-------------------------------------------------------
 // Configuration Options
@@ -313,5 +320,9 @@ extern jmp_buf __unity_exp_buf__;
     } TEST_CATCH {                                            \
         TEST_FAIL_MESSAGE(message);                           \
     } TEST_ETRY;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
