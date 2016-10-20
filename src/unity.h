@@ -287,6 +287,7 @@ extern jmp_buf __unity_exp_buf__;
 #define TEST_CATCH } else {
 #define TEST_ETRY } } while(0)
 #define TEST_THROW longjmp(__unity_exp_buf__, 1)
+#define CATCH_TEST_FAIL() (setjmp(__unity_exp_buf__) != 0)
 
 // Refactor to make this easier to manage
 #define TEST_SHOULD_CATCH_ASSERT(actual)                  \
