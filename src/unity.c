@@ -1248,7 +1248,13 @@ void UnityDefaultTestRun(UnityTestFunction Func, const char* FuncName, const int
     if (TEST_PROTECT())
     {
         setUp();
-        Func();
+        if (CATCH_TEST_FAIL()) {
+            UnityTestResultsFailBegin(42);
+            UnityAddMsgIfSpecified("TEST_FAIL called");
+            UNITY_FAIL_AND_BAIL;
+        } else {
+            Func();
+        }
     }
     if (TEST_PROTECT() && !(Unity.CurrentTestIgnored))
     {
